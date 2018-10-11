@@ -9,16 +9,27 @@ import turtle  # Needed for graphics
 
 # Ignore 'Undefined variable from import' errors in Eclipse.
 turtle.left(90)
+turtle.speed(0)
 memo = {}
 def sv_tree(trunk_length, levels):
+    pablo = levels*2
+    turtle.pendown()
+    turtle.pensize(pablo)
     if levels > 0:
+        turtle.pencolor("brown")
         turtle.forward(trunk_length)
         turtle.left(45)
         sv_tree(trunk_length/2,levels-1)
         turtle.right(90)
         sv_tree(trunk_length/2,levels-1)
         turtle.left(45)
-        turtle.backward(trunk_length)
+        if levels == 1:
+            turtle.pencolor("green")
+            turtle.dot(85)
+            turtle.backward(trunk_length)
+        else:
+            turtle.penup()
+            turtle.backward(trunk_length)
     else:
         return
         
@@ -75,4 +86,4 @@ print(fast_change(724, [1, 5, 10, 20, 50, 100]))
 print(fast_change(888, [1, 5, 10, 20, 50, 100]))
 
 # Should take a few seconds to draw a tree.
-sv_tree(128, 6)
+sv_tree(128, 7)
