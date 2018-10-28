@@ -30,6 +30,6 @@ def mylen(L):
 
 def mysum(L):
     if L==[]:
-        return ""
+        return 0
     else:
         return L[0] + mysum(L[1:])
